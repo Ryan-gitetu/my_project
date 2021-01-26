@@ -7,18 +7,25 @@ export default class Ex1Controller extends Controller {
   @tracked info ="";
   @tracked styles ='alert alert-info';
   @tracked styleInfo ='alert alert-info';
-  @tracked texteInfo = 'note modifiée.'
+  @tracked texteInfo = 'note modifiée.';
   MAX=100;
+
+
+  index = 0;
+  items = [];
 
   @action
   clear() {
     this.content ='';
+    this.texteInfo= 'note effacé.';
+    this.styles = 'alert alert-success';
   }
 
   @action
   save() {
     this.styles = 'alert alert-success';
     this.texteInfo = 'note sauvegardée.';
+    items(this.content);
   }
 
   @action
@@ -30,6 +37,13 @@ export default class Ex1Controller extends Controller {
     } else if(this.content.length > 0) {
       this.styles = 'alert alert-info';
     }
+  }
+
+  set items(ajout) {
+    ajout.split('\n').forEach((item, i) => {
+      this.items[this.item.length] = item;
+    });
+    console.log(items);
   }
 
   get size() {
