@@ -6,6 +6,8 @@ export default class Ex1Controller extends Controller {
   @tracked content='';
   @tracked info ="";
   @tracked styles ='alert alert-info';
+  @tracked styleInfo ='alert alert-info';
+  @tracked texteInfo = 'note modifiée.'
   MAX=100;
 
   @action
@@ -15,17 +17,18 @@ export default class Ex1Controller extends Controller {
 
   @action
   save() {
-
+    this.styles = 'alert alert-success';
+    this.texteInfo = 'note sauvegardée.';
   }
 
   @action
   update(){
-    if (this.content >0) {
-      this.styles = 'alert alert-info';
-    } else if (this.content > 50) {
-      this.styles = 'alert alert-warning';
-    } else if(this.content > 80) {
+    if (this.content.length >80) {
       this.styles = 'alert alert-danger';
+    } else if (this.content.length > 50) {
+      this.styles = 'alert alert-warning';
+    } else if(this.content.length > 0) {
+      this.styles = 'alert alert-info';
     }
   }
 

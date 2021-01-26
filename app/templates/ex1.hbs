@@ -4,11 +4,11 @@
     Ex1 : Note application
   </div>
   <div class="card-body">
-    <Textarea class="form-control mb-3" rows="4" @value={{this.content}} @input={{this.update}}/>
+    <Textarea class="form-control mb-3" rows="4" maxlength=100 @value={{this.content}} @input={{this.update}}/>
     <button class="btn btn-primary" type="button" {{on "click" this.save}}> Enregistrer </button>
     <button class="btn btn-primary" type="button" {{on "click" this.clear}}> Effacer </button>
-    <div class="alert alert-info"> Il vous reste {{this.size}} caractères à saisir.</div>
-    <div class={{this.styles}}> note modifiée.</div>
+    <div class="{{this.styleinfo}}"> Il vous reste {{this.size}} caractères à saisir.</div>
+    <div class={{this.style}}> {{this.texteInfo}} </div>
   </div>
 </div>
 {{outlet}}
