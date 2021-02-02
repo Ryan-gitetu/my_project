@@ -1,0 +1,10 @@
+{{page-title "Ex2"}}
+<h1> Service </h1>
+<ul>
+  {{#each @model.services as |service|}}
+    <li {{action "toggleActive" service }}>{{service.name}}</li>
+  {{/each}}
+</ul>
+<p> {{this.nbrActive}} service(s) séléctionnés</p>
+<p>total : {{@model.sumActive}} </p>
+{{outlet}}
