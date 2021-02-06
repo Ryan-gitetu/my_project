@@ -19,8 +19,6 @@ export default class Ex2Route extends Route {
     } else {
       service.active = true;
     }
-    console.log(service.);
-    this.nbrActive = this.model.countActive;
-
+    console.log(service.active);
   }
 }

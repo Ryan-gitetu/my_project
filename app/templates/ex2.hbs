@@ -6,5 +6,5 @@
   {{/each}}
 </ul>
 <p> {{this.nbrActive}} service(s) séléctionnés</p>
-<p>total : {{@model.sumActive}} </p>
+<p>total : {{format-currency @model.sumActive '€'}} </p>
 {{outlet}}
