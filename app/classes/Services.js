@@ -10,7 +10,8 @@ export default class Services {
 
 
   get countActive(){
-    test = this.services.filterBy('active',true).length;
+    var test = this.services.filterBy('active',true).length;
+    console.log("active:"+test);
     return test;
   }
 
@@ -20,6 +21,7 @@ export default class Services {
     this.services.filterBy('active',true).forEach(function(service) {
       total += service.price;
     });
+    console.log("prix:"+total);
     return total;
   }
 }

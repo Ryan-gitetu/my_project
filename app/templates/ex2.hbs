@@ -2,9 +2,9 @@
 <h1> Service </h1>
 <ul>
   {{#each @model.services as |service|}}
-    <li {{action "toggleActive" service }}>{{service.name}}</li>
+    <li {{action "toggleActive" service.name }}>{{service.name}}</li>
   {{/each}}
 </ul>
-<p> {{this.nbrActive}} service(s) séléctionnés</p>
-<p>total : {{format-currency @model.sumActive '€'}} </p>
+<p > {{plural this.nbrActive}} </p>
+<p>total : {{format-currency this.total '€'}} </p>
 {{outlet}}
