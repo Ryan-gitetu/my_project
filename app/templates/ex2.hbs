@@ -1,10 +1,56 @@
 {{page-title "Ex2"}}
-<h1> Service </h1>
-<ul>
+
+<style media="screen">
+  .box {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .title {
+    margin: 30px 0px 20px;
+  }
+
+  .cardService{
+    padding: 10px 0px 10px;
+    margin-bottom: 40px;
+  }
+
+  .lineService {
+    border: none;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .numberService {
+    font-weight: bold;
+  }
+</style>
+
+<div class="card bg-info box">
+  <h1 class="_card-hader text-center text-light title"> Service </h1>
+  <div class="card cardService">
+    <p class="card text-dark lineService" >
+      Choisissez les éléments à inclure <br>
+    </p>
+    <p class="card text-dark lineService numberService" >
+    {{plural this.nbrActive}}
+    </p>
+  </div>
+
+
   {{#each @model.services as |service|}}
-    <li {{action "toggleActive" service.name }}>{{service.name}}</li>
+    {{#each this.stylesServices as |indexStyle|}}
+      {{#if (eq service.name indexStyle.name)}}
+        <div class="{{indexStyle.style}}" {{action "toggleActive" service.name }}>{{service.name}}</div>
+      {{/if}}
+    {{/each}}
   {{/each}}
-</ul>
-<p > {{plural this.nbrActive}} </p>
-<p>total : {{format-currency this.total '€'}} </p>
+
+
+  <p>total : {{format-currency this.total '€'}} </p>
+</div>
 {{outlet}}

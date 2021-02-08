@@ -8,6 +8,20 @@ export default class Ex2Controller extends Controller {
 
 @tracked nbrActive = "1";
 @tracked total = 300;
+@tracked stylesServices = [
+  {
+    name: datas[0].name,
+    style:'alert alert-success'},
+  {
+    name: datas[1].name,
+    style:'alert alert-secondary'},
+    {
+      name: datas[2].name, 
+      style:'alert alert-secondary'},
+    {
+      name: datas[3].name,
+      style:'alert alert-secondary'}
+];
 
   @action
   toggleActive(service){
@@ -28,7 +42,26 @@ export default class Ex2Controller extends Controller {
       }
 
     });
-    console.log("nbr: "+cpmt);
+    console.log("name: "+datas[1].name);
     this.nbrActive = cpmt;
   }
+
+  @action
+  isSelect(service){
+    var cpmt =0;
+    datas.forEach(value => { cpmt++; });
+
+    for (var i = 0; i < cpmt ; i++) {
+        if (service.name === datas[i].name) {
+          if (datas[i].active === true) {
+
+          }
+        }
+    }
+  }
+
+
+
+
+
 }
