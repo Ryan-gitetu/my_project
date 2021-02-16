@@ -14,7 +14,7 @@ export default class Contacts {
   }
 
   get contacts() {
-    return this.datas
+    return this.datas.filterBy('isDeleted',false);
   }
 
 }

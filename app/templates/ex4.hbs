@@ -1,2 +1,10 @@
 {{page-title "Ex4"}}
+
+<ul>
+  {{#each @model.contacts as |contact|}}
+    <li> {{contact.nom}} </li>
+  {{/each}}
+</ul>{{outlet}}
+
+
 {{outlet}}
