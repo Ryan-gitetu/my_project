@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-import Contacts from 'tds/classes/Contacts'
+import Contacts from 'tds/classes/Contacts';
 import { action } from '@ember/object';
 
 export default class Ex4Route extends Route {
