@@ -4,7 +4,9 @@ import { action } from '@ember/object';
 export default class TestNewRoute extends Route {
   model() {
     return this.store.createRecord('contact',{
-      nom: 'Smith'
+      nom: 'Smith',
+      prenom: 'John',
+      email: 'test.test@gmail.com'
     });
   }
 

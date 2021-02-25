@@ -2,6 +2,8 @@
 <ul>
   {{#each @model as |contact|}}
     <li> {{contact.nom}} </li>
+    <li> {{contact.prenom}} </li>
+    <li> {{contact.email}} </li>
   {{/each}}
 </ul>
 {{outlet}}

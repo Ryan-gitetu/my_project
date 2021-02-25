@@ -1,10 +1,26 @@
 {{page-title "Ex4"}}
 
-<ul>
-  {{#each @model.contacts as |contact|}}
-    <li> {{contact.nom}} </li>
-  {{/each}}
-</ul>{{outlet}}
-
+<div class='container'>
+  <ul>
+    {{#each @model.contacts as |contact|}}
+      <li>
+        <tr>
+          <td> {{contact.nom}}   </td>
+          <td> {{contact.prenom}} </td>
+          <td> {{contact.email}} </td>
+          <td>
+            <button class="btn btn-danger" {{action "delete" contact}}> supprimer </button>
+          </td>
+        </tr>
+      </li>
+    {{/each}}
+      <li>
+        <button class="btn btn-primary"> Ajouter </button>
+        {{#if @model.deletedsCount > 0}}
+          <button class="btn btn-danger"> Confirmer la suppression </button>
+        {{/if}}
+      </li>
+  </ul>{{outlet}}
+</div>
 
 {{outlet}}
