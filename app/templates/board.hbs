@@ -1,2 +1,17 @@
 {{page-title "Board"}}
+<div class="ui green segment">
+  <button class="ui black button" {{action "logout"}}>
+    Logout
+  </button>
+</div>
+<h2>Orders</h2>
+<ul>
+  {{#each @model as |order|}}
+    <li>
+      <!-- <LinkTo @route="order" @model={{order}}> -->
+        {{order.dateCreation}} <span class="ui circular label">{{order.count}}</span>
+      <!-- </LinkTo> -->
+    </li>
+  {{/each}}
+</ul>
 {{outlet}}
