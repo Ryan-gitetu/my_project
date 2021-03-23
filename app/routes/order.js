@@ -14,8 +14,8 @@ export default class OrderRoute extends Abstractroute {
       console.log(user.name);
       return RSVP.hash({
         orders: this.store.query('order', {
-          filter: { idEmployee: user.id },
-          include: 'orderdetail',
+          filter: { id: id },
+          include: 'orderdetails',
         }),
         employee: user,
       });

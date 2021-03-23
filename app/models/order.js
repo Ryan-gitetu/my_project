@@ -5,7 +5,7 @@ export default class OrderModel extends Model {
   @belongsTo('employee') employee;
   @attr('date') dateCreation;
   @attr('string') itemsNumber;
-  @hasMany('orderdetail') orderdetail;
+  @hasMany('orderdetail') orderdetails;
 
   get count(){
     return this.orderdetail.length;

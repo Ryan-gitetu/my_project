@@ -4,8 +4,7 @@
 <ul>
   {{#each @model.orders as |order|}}
       <li>{{order.dateCreation}}
-       {{#each order.orderdetail as |orderdetail|}}
-          <p>33</p>
+       {{#each order.orderdetails as |orderdetail|}}
           {{orderdetail.quantity}}
        {{/each}}
       </li>

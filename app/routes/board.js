@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 
 
 export default class BoardRoute extends Abstractroute {
+
   model() {
 
     this.redirect();
