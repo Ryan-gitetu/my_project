@@ -14,5 +14,5 @@ Router.map(function () {
   this.route('board');
   this.route('index',{path : '/index'});
   this.route('index',{path : "/"})
-  this.route('order');
+  this.route('order',{path : "/order/:id"});
 });
