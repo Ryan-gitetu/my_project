@@ -19,11 +19,6 @@ export default class BoardRoute extends Abstractroute {
         }),
         employee: user,
       });
-      // console.log(user.name);
-      // return this.store.query('order',{filter: {idEmployee: user.id}})
-      // .then((resultat) => {
-      //   return resultat;
-      // })
     }
   }
 
