@@ -8,12 +8,11 @@ export default class IndexRoute extends Route {
   login(email, password) {
     console.log(email);
     console.log(password);
-    this.store.findAll('employee', {
+    this.store.query('employee', {
        filter: {
          email: email
        },
      }).then((connected) => {
-       console.log(connected);
        if (connected.length) {
          connected = connected.firstObject;
          console.log(connected.name);
