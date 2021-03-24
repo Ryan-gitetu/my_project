@@ -1,7 +1,4 @@
 {{page-title "Index"}}
-<!-- <Input @value={{email}}/>
-<Input @value={{password}}/>
-<button {{action "login" email password}}>Connexion</button> -->
 <div class="ui text container">
   <div class="ui middle aligned center aligned grid">
     <div class="column">
@@ -10,18 +7,18 @@
           Log-in to your account
         </div>
       </h2>
-      <form {{action "login" email password on="submit"}} class="ui large form">
+      <form {{action "login" @model on="submit"}} class="ui large form">
         <div class="ui stacked segment">
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <Input @value={{email}} type="text" name="email" placeholder="E-mail address"/>
+              <Input @value={{@model.email}} type="text" name="email" placeholder="E-mail address"/>
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <Input @value={{password}} type="password" name="password" placeholder="Password"/>
+              <Input @value={{@model.password}} type="password" name="password" placeholder="Password"/>
             </div>
           </div>
           <button type="submit" class="ui button">  Se connecter </button>

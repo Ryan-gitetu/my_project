@@ -28,6 +28,6 @@ export default class UserAuthService extends Service {
   }
   login(user) {
     this.user = user;
-    this.storage.user = JSON.stringify({ id: user.id, email: user.email });
+    this.storage.user = JSON.stringify({ id: user.id, email: user.email, name: user.name });
   }
 }
