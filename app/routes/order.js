@@ -6,19 +6,16 @@ import RSVP from 'rsvp';
 
 export default class OrderRoute extends Abstractroute {
 
-  model(id) {
-    console.log(id);
-    this.redirect();
+  model(params) {
+    //console.log();
     let user = this.userAuth.user;
     if (user) {
       console.log(user.name);
       return RSVP.hash({
-        orders: this.store.query('order', {
-          filter: { idOrder: id },
-          include: 'orderdetails',
-        }),
+        order: this.store.findRecord('order', params.id , {include: 'orderdetails'}),
+        product: this.store.findRecord('product', order.product)
         employee: user,
-      });
+      })
     }
   }
 }

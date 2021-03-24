@@ -2,13 +2,12 @@
 <h1> COMMANDE </h1>
 
 <ul>
-  {{#each @model.orders as |order|}}
-      <li>{{order.dateCreation}}
-       {{#each order.orderdetails as |orderdetail|}}
-          {{orderdetail.quantity}}
-       {{/each}}
-      </li>
-    {{/each}}
+    <li>{{@model.order.dateCreation}}
+     {{#each @model.order.orderdetails as |orderdetail|}}
+        {{orderdetail.quantity}}
+        {{orderdetail.product.name}}
+     {{/each}}
+    </li>
 
 </ul>
 {{outlet}}

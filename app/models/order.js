@@ -8,7 +8,7 @@ export default class OrderModel extends Model {
   @hasMany('orderdetail') orderdetails;
 
   get count(){
-    return this.orderdetail.length;
+    return this.orderdetails.length;
   }
 
 

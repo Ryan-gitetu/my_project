@@ -8,7 +8,6 @@ export default class BoardRoute extends Abstractroute {
 
   model() {
 
-    this.redirect();
     let user = this.userAuth.user;
     console.log(user.name);
     if (user) {
