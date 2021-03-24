@@ -7,16 +7,13 @@ import { action } from '@ember/object';
 export default class BoardRoute extends Abstractroute {
 
   model() {
-
-    let user = this.userAuth.user;
-    console.log(user.name);
-    if (user) {
+    if (this.userAuth.user) {
       return RSVP.hash({
         orders: this.store.query('order', {
-          filter: { idEmployee: user.id },
+          filter: { idEmployee: this.userAuth.user.id },
           include: 'orderdetails',
         }),
-        employee: user,
+        employee: this.userAuth.user,
       });
     }
   }

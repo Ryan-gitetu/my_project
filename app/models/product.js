@@ -1,4 +1,4 @@
-import Model from '@ember-data/model';
+import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 
 export default class ProductModel extends Model {
   @attr('string') name;

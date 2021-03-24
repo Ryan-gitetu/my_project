@@ -13,7 +13,6 @@ export default class OrderRoute extends Abstractroute {
       console.log(user.name);
       return RSVP.hash({
         order: this.store.findRecord('order', params.id , {include: 'orderdetails'}),
-        product: this.store.findRecord('product', order.product)
         employee: user,
       })
     }
