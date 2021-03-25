@@ -1,10 +1,6 @@
 {{page-title "Board"}}
 <div class="ui fixed huge inverted menu" style="menu">
 
-  <!-- <div class="ui blue label center user" style="height: 50%">
-    <img style="height: 50%;" src="https://img.icons8.com/pastel-glyph/344/person-male--v1.png">
-    Veronika
-  </div> -->
   <button class="ui yellow button" {{action "logout"}} > Logout </button>
 
   <p class="ui label">
@@ -13,7 +9,7 @@
   </p>
 
   <div style="margin-right: 1%;margin-left: auto;" >
-    <button class="ui green button" > Gérer le stock </button>
+    <button class="ui green button" {{action "section"}}> Gérer le stock </button>
   </div>
 </div>
 
@@ -53,9 +49,11 @@
                 </div>
 
               </div>
-              <div class="extra content">
-                <button class="ui blue button">Voir la commande</button>
-              </div>
+              <LinkTo @route="order" @model={{order.id}}>
+                <div class="ui bottom attached  blue button">
+                  Voir la commande
+                </div>
+              </LinkTo>
             </div>
       {{/each}}
   </div>
