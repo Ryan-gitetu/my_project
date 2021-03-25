@@ -1,0 +1,29 @@
+
+.right-btn {
+}
+
+.deconnexion-btn {
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu {
+  height: 60px;
+  padding: 12px 1%;
+  width: 100%;
+  align-items: baseline;
+  top: 0;
+}
+
+.commande-div {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  align-content: space-around;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.item {
+}

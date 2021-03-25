@@ -1,15 +1,64 @@
 {{page-title "Board"}}
-<div class="ui green segment">
-<span class="ui label">{{@model.employee.name}}</span>
-  <button class="ui black button" {{action "logout"}}> Logout </button>
-</div>
-<h2>Orders</h2>
-<ul>
-  {{#each @model.orders as |order|}}
-    <LinkTo @route="order" @model={{order.id}}>
-      <li> {{order.dateCreation}} <span class="ui circular label">{{order.itemsNumber}}</span> </li>
-    </LinkTo>
-  {{/each}}
+<div class="ui fixed huge inverted menu" style="menu">
 
-</ul>
+  <!-- <div class="ui blue label center user" style="height: 50%">
+    <img style="height: 50%;" src="https://img.icons8.com/pastel-glyph/344/person-male--v1.png">
+    Veronika
+  </div> -->
+  <button class="ui yellow button" {{action "logout"}} > Logout </button>
+
+  <p class="ui label">
+    <img class="ui avatar image" src="https://img.icons8.com/pastel-glyph/344/person-male--v1.png">
+    {{model.employee.name}}
+  </p>
+
+  <div style="margin-right: 1%;margin-left: auto;" >
+    <button class="ui green button" > Gérer le stock </button>
+  </div>
+</div>
+
+<div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%;">
+  <div class="ui huge header"> Commandes </div>
+</div>
+
+<div class="ui grid">
+  <div class="commande-div">
+      {{#each @model.orders as |order|}}
+            <div class="carte-div ui card">
+              <div class="content">
+                <div class="header">Commande {{order.id}}</div>
+              </div>
+              <div class="content">
+
+                <h4 class="ui sub header">Date</h4>
+                <div class="ui small feed">
+                  <div class="event">
+                    <div class="content">
+                      <div class="summary">
+                        {{order.dateCreation}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h4 class="ui sub header">Nombre de produit</h4>
+                <div class="ui small feed">
+                  <div class="event">
+                    <div class="content">
+                      <div class="summary">
+                        {{order.itemsNumber}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="extra content">
+                <button class="ui blue button">Voir la commande</button>
+              </div>
+            </div>
+      {{/each}}
+  </div>
+</div>
+
 {{outlet}}
