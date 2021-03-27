@@ -8,7 +8,7 @@ use Ubiquity\orm\OrmUtils;
  * ManyToManyParser
  *
  * @author jc
- * @version 1.1.3
+ * @version 1.1.4
  */
 class ManyToManyParser {
 	private $table;
@@ -221,24 +221,24 @@ class ManyToManyParser {
 
 	private function getParserConcatWhereInMask($mask = "'{values}'") {
 		$quote = $this->db->quote;
-		return " INNER JOIN (" . $mask . ") as _tmp ON {$quote}" . $this->myFkField . "{$quote}=_tmp._id";
+		return " INNER JOIN (" . $mask . ") as _tmp ON {$quote}" . $this->myFkField . "{$quote}=CAST(_tmp._id as integer)";
 	}
 
 	public function generateConcatSQL() {
 		$sql = $this->getConcatSQL ();
-		$where = "";
-		if (($size = sizeof ( $this->whereValues )) > 0) {
+		$where = '';
+		if (($size = \count ( $this->whereValues )) > 0) {
 			if ($size > 3) {
-				$res = array_fill ( 0, $size, "?" );
-				$res [0] = "SELECT ? as _id";
-				$where = $this->getParserConcatWhereInMask ( implode ( " UNION ALL SELECT ", $res ) );
+				$res = array_fill ( 0, $size, '?' );
+				$res [0] = 'SELECT ? as _id';
+				$where = $this->getParserConcatWhereInMask ( \implode ( ' UNION ALL SELECT ', $res ) );
 			} else {
-				$mask = $this->getParserConcatWhereMask ( " ?" );
-				$res = array_fill ( 0, $size, $mask );
-				$where = "WHERE " . implode ( " OR ", $res );
+				$mask = $this->getParserConcatWhereMask ( ' ?' );
+				$res = \array_fill ( 0, $size, $mask );
+				$where = 'WHERE ' . \implode ( ' OR ', $res );
 			}
 		}
-		return str_replace ( "{condition}", $where, $sql );
+		return \str_replace ( '{condition}', $where, $sql );
 	}
 
 	public function addValue($value) {

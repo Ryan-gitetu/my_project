@@ -36,6 +36,8 @@ class ValidationModelGenerator {
 					return $this->getValidatorAnnotFromModel( 'isBool' );
 				}
 				break;
+			case 'boolean':case 'bool':
+				return $this->getValidatorAnnotFromModel( 'isBool' );
 			case 'date' :
 				return $this->getValidatorAnnotFromModel ( 'type', 'date' );
 			case 'datetime' :
@@ -68,7 +70,7 @@ class ValidationModelGenerator {
 	protected function parseNotNull(&$validatorAnnots) {
 		if ($this->notNull) {
 			$notNullAffected = false;
-			$size = sizeof ( $validatorAnnots );
+			$size = \count ( $validatorAnnots );
 			$i = 0;
 			while ( $i < $size && ! $notNullAffected ) {
 				$validatorAnnot = $validatorAnnots [$i];

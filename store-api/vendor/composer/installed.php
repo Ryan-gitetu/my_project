@@ -1,12 +1,13 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.7',
-    'version' => '1.0.7.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
+      0 => '2.4.x-dev',
     ),
-    'reference' => NULL,
+    'reference' => 'd69ecac9bb730ecc2d70cf8984fdf25b174b0142',
     'name' => 'phpmv/ubiquity-project',
   ),
   'versions' => 
@@ -31,12 +32,13 @@
     ),
     'phpmv/ubiquity' => 
     array (
-      'pretty_version' => '2.4.3',
-      'version' => '2.4.3.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
+        0 => '2.4.x-dev',
       ),
-      'reference' => '684c0dd5e319b8feacd1c2e098d1008ef6458538',
+      'reference' => 'a169616c2706a43c10a7414769c59cc66c5beff4',
     ),
     'phpmv/ubiquity-attributes' => 
     array (
@@ -85,12 +87,13 @@
     ),
     'phpmv/ubiquity-project' => 
     array (
-      'pretty_version' => '1.0.7',
-      'version' => '1.0.7.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
+        0 => '2.4.x-dev',
       ),
-      'reference' => NULL,
+      'reference' => 'd69ecac9bb730ecc2d70cf8984fdf25b174b0142',
     ),
     'phpmv/ubiquity-webtools' => 
     array (

@@ -110,7 +110,7 @@ class ModelViewer {
 		$attributes = $this->controller->_getAdminData ()->getFieldNames ( $model );
 		$this->setDataTableAttributes ( $dataTable, $attributes, $model, $instances );
 		$dataTable->setCaptions ( $this->getCaptions ( $attributes, $model ) );
-
+		$dataTable->setFocusable(true);
 		$dataTable->addClass ( 'small very compact' );
 		$lbl = new HtmlLabel ( 'search-query', "<span id='search-query-content'></span>" );
 		$icon = $lbl->addIcon ( 'delete', false );
@@ -142,13 +142,13 @@ class ModelViewer {
 
 		if (! isset ( $selector )) {
 			if (\count ( $instances ) > 0 && $this->showDetailsOnDataTableClick ()) {
-				$dataTable->getOnRow ( "click", $adminRoute . $files->getRouteDetails (), "#table-details", [ "selector" => $selector,"attr" => "data-ajax","hasLoader" => false,"jsCondition" => "!event.detail || event.detail==1","jsCallback" => "return false;" ] );
-				$dataTable->setActiveRowSelector ( "active" );
+				$dataTable->getOnRow ( 'mousedown', $adminRoute . $files->getRouteDetails (), "#table-details", [ "selector" => $selector,"attr" => "data-ajax","hasLoader" => false,"jsCallback" => "return false;" ] );
+				$dataTable->setActiveRowSelector ( 'active' );
 			}
 
-			$dataTable->setUrls ( [ "refresh" => $adminRoute . $files->getRouteRefresh (),"delete" => $adminRoute . $files->getRouteDelete (),"edit" => $adminRoute . $files->getRouteEdit () . "/" . $modal,"display" => $adminRoute . $files->getRouteDisplay () . "/" . $modal ] );
-			$dataTable->setTargetSelector ( [ "delete" => "#table-messages","edit" => "#frm-add-update","display" => "#table-details" ] );
-			$this->addEditMemberFonctionality ( "dataTable" );
+			$dataTable->setUrls ( [ 'refresh' => $adminRoute . $files->getRouteRefresh (),'delete' => $adminRoute . $files->getRouteDelete (),'edit' => $adminRoute . $files->getRouteEdit () . "/" . $modal,'display' => $adminRoute . $files->getRouteDisplay () . "/" . $modal ] );
+			$dataTable->setTargetSelector ( [ 'delete' => '#table-messages','edit' => '#frm-add-update','display' => '#table-details' ] );
+			$this->addEditMemberFonctionality ( 'dataTable' );
 		}
 		$this->addAllButtons ( $dataTable, $attributes );
 	}

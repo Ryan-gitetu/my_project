@@ -104,17 +104,17 @@
         },
         {
             "name": "phpmv/ubiquity",
-            "version": "2.4.3",
-            "version_normalized": "2.4.3.0",
+            "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpMv/ubiquity.git",
-                "reference": "684c0dd5e319b8feacd1c2e098d1008ef6458538"
+                "reference": "a169616c2706a43c10a7414769c59cc66c5beff4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpMv/ubiquity/zipball/684c0dd5e319b8feacd1c2e098d1008ef6458538",
-                "reference": "684c0dd5e319b8feacd1c2e098d1008ef6458538",
+                "url": "https://api.github.com/repos/phpMv/ubiquity/zipball/a169616c2706a43c10a7414769c59cc66c5beff4",
+                "reference": "a169616c2706a43c10a7414769c59cc66c5beff4",
                 "shasum": ""
             },
             "require": {
@@ -126,14 +126,15 @@
                 "phpmv/ubiquity-dev": "^0.1",
                 "phpmv/ubiquity-devtools": "dev-master"
             },
-            "time": "2021-03-07T19:10:29+00:00",
+            "time": "2021-03-25T01:52:27+00:00",
+            "default-branch": true,
             "type": "framework",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.4.x-dev"
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-4": {
                     "Ubiquity\\": "src/Ubiquity/"
@@ -159,7 +160,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpMv/ubiquity/issues",
-                "source": "https://github.com/phpMv/ubiquity/tree/2.4.3"
+                "source": "https://github.com/phpMv/ubiquity/tree/master"
             },
             "install-path": "../phpmv/ubiquity"
         },

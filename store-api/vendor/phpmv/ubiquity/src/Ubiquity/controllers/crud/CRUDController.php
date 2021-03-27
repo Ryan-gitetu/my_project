@@ -8,7 +8,6 @@ use Ubiquity\controllers\crud\interfaces\HasModelViewerInterface;
 use Ubiquity\controllers\semantic\MessagesTrait;
 use Ubiquity\utils\http\URequest;
 use Ubiquity\utils\http\UResponse;
-use Ubiquity\controllers\rest\ResponseFormatter;
 use Ubiquity\orm\OrmUtils;
 use Ubiquity\utils\base\UString;
 use Ajax\semantic\html\collections\HtmlMessage;
@@ -35,6 +34,18 @@ abstract class CRUDController extends ControllerBase implements HasModelViewerIn
 		DAO::$transformerOp = 'toView';
 		$this->style = '';
 		$this->_insertJquerySemantic ();
+	}
+	
+	/**
+	 * Return a JSON representation of $instances for the JsonDataTable component 
+	 * @param array $instances
+	 * @return string
+	 */
+	protected function refreshAsJson($instances){
+		$objects = \array_map ( function ($o) {
+			return $o->_rest;
+		}, $instances );
+		return \json_encode(\array_values ( $objects ));
 	}
 
 	public function _setStyle($elm) {
@@ -106,8 +117,7 @@ abstract class CRUDController extends ControllerBase implements HasModelViewerIn
 		if (isset ( $recordsPerPage )) {
 			if (! is_array ( $grpByFields )) {
 				UResponse::asJSON ();
-				$responseFormatter = new ResponseFormatter ();
-				print_r ( $responseFormatter->getJSONDatas ( $instances ) );
+				echo $this->refreshAsJson($instances);
 			} else {
 				$this->_renderDataTableForRefresh ( $instances, $model, $totalCount );
 			}

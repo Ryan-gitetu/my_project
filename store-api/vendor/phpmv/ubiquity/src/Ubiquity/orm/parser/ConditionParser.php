@@ -11,7 +11,7 @@ use Ubiquity\db\SqlUtils;
  * This class is part of Ubiquity
  *
  * @author jcheron <myaddressmail@gmail.com>
- * @version 1.0.2
+ * @version 1.0.4
  *
  */
 class ConditionParser {
@@ -76,7 +76,7 @@ class ConditionParser {
 	}
 
 	private function addParams($value) {
-		if (! isset($this->params[$value])) {
+		if ($value!=null && ! isset($this->params[$value])) {
 			return $this->params[$value] = true;
 		}
 		return false;
@@ -99,12 +99,12 @@ class ConditionParser {
 	}
 
 	public function compileParts($separator = ' OR ') {
-		if ($separator == ' OR ' && \sizeof($this->parts) > 3) {
+		if ($separator == ' OR ' && \count($this->parts) > 3) {
 			$parts = $this->refactorParts();
 			$conditions = [];
 			foreach ($parts as $part => $values) {
 				$values[0] = 'SELECT ? as _id';
-				$conditions[] = ' INNER JOIN (' . \implode(' UNION ALL SELECT ', $values) . ') as _tmp ON ' . $part . '=_tmp._id';
+				$conditions[] = ' INNER JOIN (' . \implode(' UNION ALL SELECT ', $values) . ') as _tmp ON ' . $part . '=cast(_tmp._id as integer)';
 			}
 			$this->condition = \implode(' ', $conditions);
 		} else {
@@ -175,7 +175,7 @@ class ConditionParser {
 
 	public function countParts() {
 		if (\is_array($this->params))
-			return \sizeof($this->params);
+			return \count($this->params);
 		return 0;
 	}
 
