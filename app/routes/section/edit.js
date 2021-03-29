@@ -22,5 +22,11 @@ export default class SectionEditRoute extends Abstractroute {
       this.transitionTo('board');
   }
 
+  @action
+  transtionto(product_id) {
+      this.transitionTo('section.edit');
+      this.transitionTo('section.edit.edit',product_id);
+  }
+
 
 }

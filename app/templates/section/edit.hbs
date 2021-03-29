@@ -17,46 +17,31 @@
   <div class="ui huge header"> Sections {{@model.section.name}} </div>
 </div>
 
-<!-- {{#each @model.products as |product|}}
-  <div class="ui  header">
-    {{product.name}}
-  </div>
-{{/each}} -->
-
-<div class="ui grid">
-  <div class="commande-div">
-      {{#each @model.products as |product|}}
-            <div class="carte-div ui card" style="width: 300px;">
-              <div class="content">
-                <div class="ui grid"  style="vertical-align: baseline;">
-                  <div class="fiveteen wide column" style="width: auto;">
-                    <div class="ui  header">
-                      {{product.name}}
-                    </div>
-                  </div>
-                  <div class="right floated aligned one wide column" style="padding-right: 50px;">
-                    <button class="circular ui negative icon button" {{action "delete" product.id}}>
-                      <i class="trash alternate icon"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="content">
-                <h4 class="ui sub header">Description</h4>
-                <div class="ui small feed">
-                  <div class="event">
-                    {{product.comments}}
-                  </div>
-                </div>
-              </div>
-
-              <LinkTo @route="section.edit" @model={{product.id}}>
-                <div class="ui bottom attached  blue button">
-                  Voir la section
-                </div>
-              </LinkTo>
+<div class="ui huge aligned celled list" style="margin: 5% 10%">
+  {{#each @model.products as |product|}}
+      <div class="item">
+        <div class="right floated content">
+          <!-- <LinkTo @route="section.edit.edit" @model={{product.id}}> -->
+            <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
+              <i class="edit alternate icon"></i>
             </div>
-      {{/each}}
-  </div>
+          <!-- </LinkTo> -->
+          <div class="ui negative button" {{action "delete" product.id}}> Supprimer
+            <i class="trash alternate icon"></i>
+          </div>
+        </div>
+        <!-- <img class="ui avatar image" src="{{product.image}}"> -->
+        <div class="content">
+          {{product.name}}
+        </div>
+      </div>
+      {{outlet product.id}}
+    {{/each}}
 </div>
 {{outlet}}
+
+        <!-- <LinkTo @route="section.edit" @model={{product.id}}>
+          <div class="ui bottom attached  blue button">
+            Voir la section
+          </div>
+        </LinkTo> -->
