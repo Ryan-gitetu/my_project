@@ -28,5 +28,16 @@ export default class SectionEditRoute extends Abstractroute {
       this.transitionTo('section.edit.edit',product_id);
   }
 
+  @action
+  delete(product) {
+    product.deleteRecord();
+    product.save();
+  }
+
+  @action
+  add(section_id) {
+    this.transitionTo('section.edit.add-product');
+  }
+
 
 }

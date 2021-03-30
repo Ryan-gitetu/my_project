@@ -13,18 +13,25 @@
   </div>
 </div>
 
-<div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%;">
+<div class="ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%; margin-right: 2%;">
   <div class="ui huge header"> Sections {{@model.section.name}} </div>
 </div>
 
-<div class="ui huge aligned celled list" style="margin: 5% 10%">
+<div style="margin-right: 11%; margin-bottom: 5%; margin-left: auto;">
+  <button class="ui right floated teal large button" style="margin-left: auto; margin-right: 0%;" {{action "add" @model.section.id}} >
+    <i class="icon add"></i>
+    AJouter un produit
+  </button>
+</div>
+{{outlet "addProduct"}}
+<div class="ui huge aligned celled list" style="margin: 0% 10% 5% 10%">
   {{#each @model.products as |product|}}
       <div class="item">
         <div class="right floated content">
           <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
             <i class="edit alternate icon"></i>
           </div>
-          <div class="ui negative button" {{action "delete" product.id}}> Supprimer
+          <div class="ui negative button" {{action "delete" product}}> Supprimer
             <i class="trash alternate icon"></i>
           </div>
         </div>

@@ -11,6 +11,7 @@ Router.map(function () {
     this.route('index');
     this.route('edit', {path: 'edit/:id'}, function() {
       this.route('edit', {path: 'edit/:id'});
+      this.route('add-product');
     });
   });
   this.route('board');

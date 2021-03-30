@@ -12,10 +12,11 @@ export default class SectionEditEditRoute extends Abstractroute {
     if (this.userAuth.user) {
       return RSVP.hash({
         employee: this.userAuth.user,
+        products: this.store.findAll('product'),
         product: this.store.findRecord('product', this.idProduit)
       });
     }
-    console.log(product.name);
+    console.log(product.packs.length);
   }
 
   renderTemplate() {
@@ -29,6 +30,19 @@ export default class SectionEditEditRoute extends Abstractroute {
         tmp.transitionTo('section.edit.edit',product_id);
       });
   }
+
+  @action
+  annuler() {
+    this.transitionTo('section.edit');
+  }
+
+  @action
+  modifierProduit(produit) {
+    produit.save();
+    this.transitionTo('section.edit');
+  }
+
+
 
 
 }
