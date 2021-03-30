@@ -1,3 +1,22 @@
 {{page-title "Edit"}}
-<h1> edit product </h1>
+<div class="ui form" style="margin: 1% 10%;">
+  <div class="fields">
+    <div class="six wide field">
+      <label>Nom du produit</label>
+      <input type="text" placeholder="Nom" value="{{@model.product.name}}">
+    </div>
+    <div class="two wide field" style="margin-right: 0%; margin-left:auto">
+      <label>Prix du produit</label>
+      <input type="text" placeholder="Prix" value="{{@model.product.price}}">
+    </div>
+    <div class="two wide field" style="margin-right: 10%; margin-left:5%">
+      <label>Promotion du produit</label>
+      <input type="text" placeholder="Promotion" value="{{@model.product.promotion}}">
+    </div>
+  </div>
+  <div class="field">
+    <label>Text</label>
+    <textarea>{{@model.product.comments}}</textarea>
+  </div>
+</div>
 {{outlet}}

@@ -11,13 +11,11 @@ export default class SectionEditEditRoute extends Abstractroute {
     this.idProduit = params.id;
     if (this.userAuth.user) {
       return RSVP.hash({
-        section: this.store.findRecord('section', params.id),
         employee: this.userAuth.user,
-        products: this.store.query('product', {
-           filter: { idSection: params.id },
-         })
+        product: this.store.findRecord('product', this.idProduit)
       });
     }
+    console.log(product.name);
   }
 
   renderTemplate() {

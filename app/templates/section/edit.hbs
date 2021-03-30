@@ -21,16 +21,13 @@
   {{#each @model.products as |product|}}
       <div class="item">
         <div class="right floated content">
-          <!-- <LinkTo @route="section.edit.edit" @model={{product.id}}> -->
-            <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
-              <i class="edit alternate icon"></i>
-            </div>
-          <!-- </LinkTo> -->
+          <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
+            <i class="edit alternate icon"></i>
+          </div>
           <div class="ui negative button" {{action "delete" product.id}}> Supprimer
             <i class="trash alternate icon"></i>
           </div>
         </div>
-        <!-- <img class="ui avatar image" src="{{product.image}}"> -->
         <div class="content">
           {{product.name}}
         </div>
