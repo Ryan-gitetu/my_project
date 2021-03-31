@@ -6,13 +6,16 @@ import { action } from '@ember/object';
 export default class SectionEditAddProductRoute extends Abstractroute {
 
   act_section;
+  newProduct;
 
   model() {
     if (this.userAuth.user) {
+      this.newProduct = this.store.createRecord('product', {});
       this.act_section = this.modelFor('section.edit');
       return RSVP.hash({
         employee: this.userAuth.user,
-        section: this.act_section
+        section: this.act_section,
+        product: this.newProduct
       });
     }
   }
@@ -28,9 +31,9 @@ export default class SectionEditAddProductRoute extends Abstractroute {
 
   @action
   ajouterProduit(produit) {
-    let newProduit = this.store.createRecord('product',produit);
-    newProduit.save().then((product) => {
-      this.act_section.section.get('products').pushObject(product);
+    this.act_section.section.products.pushObject(produit);
+    produit.save().then(() => {
+      this.act_section.products.save();
     });
 
     this.transitionTo('section.edit');
