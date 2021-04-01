@@ -38,12 +38,12 @@ export default class SectionIndexRoute extends Abstractroute {
 
     @action
     addSection(section) {
-      this.transitionTo('section.add');
+      this.transitionTo('section.index.add');
     }
 
     @action
     addProduit(section) {
-      this.transitionTo('section.add-product');
+      this.transitionTo('section.index.add-product');
     }
 
 }

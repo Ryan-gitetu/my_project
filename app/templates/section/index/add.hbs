@@ -1,0 +1,21 @@
+{{page-title "Add"}}
+{{page-title "AddProduct"}}
+<h1 style="margin-left: 10%; margin-bottom: 2%;"> Créer une nouvelle section </h1>
+<form {{action "addSection" @model on="submit"}} class="ui form" style="margin: 1% 10%;">
+  <div class="fields">
+    <div class="six wide field">
+      <label>Nom de la section</label>
+      <Input type="text" placeholder="Nom" @value={{@model.name}}/>
+    </div>
+  </div>
+
+  <div class="field" style="margin-right: 11%;">
+    <label>Description de la section</label>
+    <Textarea rows="4" @value={{@model.description}}/>
+  </div>
+  <button type="submit" class="ui green button"> Créer la section </button>
+  <button class="ui negative button"> Annuler </button>
+</form>
+{{outlet}}
+
+{{outlet}}
