@@ -1,6 +1,6 @@
 {{page-title "AddProduct"}}
 <h1 style="margin-left: 10%; margin-bottom: 2%;"> Créer un nouveau produit </h1>
-<form {{action "ajouterProduit" @model.product on="submit"}} class="ui form" style="margin: 1% 10%;">
+<form {{action "ajouterProduit" @model on="submit"}} class="ui form" style="margin: 1% 10%;">
   <div class="fields">
     <div class="six wide field">
       <label>Nom du produit</label>
@@ -33,13 +33,13 @@
 
   <div class="field" style="margin: 1% 11% 1% 0%">
     <label> Section </label>
-    <UiDropdown class="selection" @selected={{this.act_section}} @onChange={{fn (mut @model.section)}} as |execute mapper|>
-      <div class="default text">Packs</div>
+    <UiDropdown class="ui search selection dropdown" @selected={{@model.sectionSelected}} @onChange={{fn (mut @model.sectionSelected)}} as |execute mapper|>
+      <div class="default text">Section</div>
       <i class="dropdown icon"></i>
       <div class="menu" style="height: auto;">
-        {{#each @model.products as |product|}}
-          <div data-value="{{map-value mapper product}}" class="item">
-            {{product.name}}
+        {{#each @model.sections as |section|}}
+          <div data-value="{{map-value mapper section}}" class="item">
+            {{section.name}} {{section.products.length}}
           </div>
         {{/each}}
       </div>
@@ -51,6 +51,6 @@
     <Textarea rows="3" @value={{@model.product.comments}}/>
   </div>
   <button type="submit" class="ui green button"> Ajouter le produit </button>
-  <button class="ui negative button"> Annuler </button>
+  <button class="ui negative button" {{action "annuler" @model.product}}> Annuler </button>
 </form>
 {{outlet}}

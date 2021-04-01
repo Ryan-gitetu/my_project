@@ -11,7 +11,7 @@ export default class SectionEditAddProductRoute extends Abstractroute {
   model() {
     if (this.userAuth.user) {
       this.newProduct = this.store.createRecord('product', {});
-      this.act_section = this.modelFor('section.edit');
+      //this.act_section = this.modelFor('section.edit');
       return RSVP.hash({
         employee: this.userAuth.user,
         section: this.act_section,

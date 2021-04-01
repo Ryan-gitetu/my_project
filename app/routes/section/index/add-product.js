@@ -8,8 +8,10 @@ export default class SectionIndexAddProductRoute extends Abstractroute {
   model() {
     if (this.userAuth.user) {
       return RSVP.hash({
-        section: this.store.findAll('section'),
-        product: {}
+        products: this.store.findAll('product'),
+        sections: this.store.findAll('section', {include: 'products'}),
+        product: {},
+        sectionSelected: {}
       });
     }
   }
@@ -19,18 +21,29 @@ export default class SectionIndexAddProductRoute extends Abstractroute {
   }
 
   @action
-  annuler() {
-    this.newProduct.destroyRecord();
+  annuler(product) {
     this.transitionTo('section.index');
   }
 
   @action
-  ajouterProduit(produit) {
-    this.act_section.section.products.pushObject(produit);
-    produit.save().then(() => {
-      this.act_section.products.save();
+  ajouterProduit(model) {
+    // let sectionSelected = this.store.findRecord('section', model.sectionSelected.id);
+    console.log("c",model.product.name);
+    let newProd = this.store.createRecord('product',{
+      name: model.product.name,
+      price: model.product.price,
+      promotion: model.product.promotion,
+      comments: model.product.comments,
+      products: model.product.packs
     });
 
-    this.transitionTo('section.edit');
+    model.sectionSelected.products.pushObject(newProd);
+
+    newProd.save().then(() => {
+      model.sectionSelected.save();
+    })
+
+
+    this.transitionTo('section.index');
   }
 }
