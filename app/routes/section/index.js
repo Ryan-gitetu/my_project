@@ -7,9 +7,11 @@ export default class SectionIndexRoute extends Abstractroute {
 
     model() {
       if (this.userAuth.user) {
+        //this.newSection = this.store.createRecord('section', {});
         return RSVP.hash({
+          //section: this.newSection,
           sections: this.store.findAll('section'),
-          employee: this.userAuth.user,
+          employee: this.userAuth.user
         });
       }
     }
@@ -19,9 +21,29 @@ export default class SectionIndexRoute extends Abstractroute {
         this.transitionTo('board');
     }
 
+    async deleteProducts(products) {
+      while (products.firstObject) {
+        let p = products.firstObject;
+        await p.destroyRecord();
+      }
+    }
+
     @action
-    delete(params) {
-      console.log(params.id);
+    deleteSection(section) {
+      this.deleteProducts(section.products).then(() => {
+        section.destroyRecord();
+      });
+
+    }
+
+    @action
+    addSection(section) {
+      this.transitionTo('section.add');
+    }
+
+    @action
+    addProduit(section) {
+      this.transitionTo('section.add-product');
     }
 
 }

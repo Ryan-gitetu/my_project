@@ -1,7 +1,8 @@
 {{page-title "Edit"}}
+<!-- MENU BAR -->
 <div class="ui fixed inverted menu">
 
-  <button class="ui yellow button" {{action "logout"}} > Logout </button>
+  <button class="ui large yellow button" {{action "logout"}} > Logout </button>
 
   <p class="ui label">
     <img class="ui avatar image" src="https://img.icons8.com/pastel-glyph/344/person-male--v1.png%22%3E">
@@ -9,12 +10,27 @@
   </p>
 
   <div style="margin-right: 1%;margin-left: auto;" >
-    <button class="ui green button" {{action "board"}}> Tableau de bord </button>
+    <button class="ui green button" style="margin-right: 0%; margin-left: auto; "{{action "toSection" @model.section}} >
+      <i class="icon arrow left"></i>
+      Retour aux sections
+    </button>
+    <button class="ui green button" {{action "board"}}>
+      <i class="icon home"></i>
+      Tableau de bord
+    </button>
   </div>
 </div>
 
+<!-- SECTION -->
 <div class="ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%; margin-right: 2%;">
-  <div class="ui huge header"> Sections {{@model.section.name}} </div>
+  <div class="ui huge header" style="margin: 0% 1%;" >
+    Sections {{@model.section.name}}
+
+    <button class="ui right floated negative large button" {{action "deleteSection" @model.section}} >
+      <i class="icon add"></i>
+      Supprimer la section
+    </button>
+  </div>
 </div>
 
 <div style="margin-right: 11%; margin-bottom: 5%; margin-left: auto;">

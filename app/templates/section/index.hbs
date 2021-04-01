@@ -1,4 +1,6 @@
 {{page-title "Index"}}
+<h1> TEST</h1>
+
 <div class="ui fixed inverted menu">
 
   <button class="ui yellow button" {{action "logout"}} > Logout </button>
@@ -13,8 +15,20 @@
   </div>
 </div>
 
-<div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%;">
-  <div class="ui huge header"> Sections </div>
+<div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%; margin-right: 2%;">
+  <div class="ui huge header" style="margin: 0% 1%;">
+    Sections
+
+    <button class="ui right floated teal large button" {{action "addSection"}} >
+      <i class="icon add"></i>
+      Ajouter une section
+    </button>
+
+    <button class="ui right floated blue large button" {{action "addProduit"}} >
+      <i class="icon add"></i>
+      Ajouter un produit
+    </button>
+  </div>
 </div>
 
 
@@ -30,7 +44,7 @@
                     </div>
                   </div>
                   <div class="right floated aligned one wide column" style="padding-right: 50px;">
-                    <button class="circular ui negative icon button" {{action "delete" section.id}}>
+                    <button class="circular ui negative icon button" {{action "deleteSection" section}}>
                       <i class="trash alternate icon"></i>
                     </button>
                   </div>

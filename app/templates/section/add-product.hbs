@@ -1,2 +1,40 @@
 {{page-title "AddProduct"}}
+<form {{action "ajouterProduit" @model.product on="submit"}} class="ui form" style="margin: 1% 10%;">
+  <div class="fields">
+    <div class="six wide field">
+      <label>Nom du produit</label>
+      <Input type="text" placeholder="Nom" @value={{@model.product.name}}/>
+    </div>
+    <div class="two wide field" style="margin-right: 0%; margin-left:auto">
+      <label>Prix du produit</label>
+      <Input type="text" placeholder="Prix" @value={{@model.product.price}}/>
+    </div>
+    <div class="two wide field" style="margin-right: 11%; margin-left:5%">
+      <label>Promotion du produit</label>
+      <Input type="text" placeholder="Promotion" @value={{@model.product.promotion}}/>
+    </div>
+  </div>
+
+  <div class="field" style="margin: 1% 11% 1% 0%">
+    <label> Packs </label>
+    <UiDropdown class="selection multiple" @selected={{@model.product.packs}} @onChange={{fn (mut @model.product.packs)}} as |execute mapper|>
+      <div class="default text">Packs</div>
+      <i class="dropdown icon"></i>
+      <div class="menu" style="height: auto;">
+        {{#each @model.products as |product|}}
+          <div data-value="{{map-value mapper product}}" class="item">
+            {{product.name}}
+          </div>
+        {{/each}}
+      </div>
+    </UiDropdown>
+  </div>
+
+  <div class="field" style="margin-right: 11%;">
+    <label>Description</label>
+    <Textarea rows="3" @value={{@model.product.comments}}/>
+  </div>
+  <button type="submit" class="ui green button"> Ajouter le produit </button>
+  <button class="ui negative button"> Annuler </button>
+</form>
 {{outlet}}
