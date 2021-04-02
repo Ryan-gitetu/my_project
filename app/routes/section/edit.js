@@ -8,11 +8,9 @@ export default class SectionEditRoute extends Abstractroute {
   model(params) {
     if (this.userAuth.user) {
       return RSVP.hash({
-        section: this.store.findRecord('section', params.id),
+        section: this.store.findRecord('section', params.id, {include: 'products'}),
         employee: this.userAuth.user,
-        products: this.store.query('product', {
-           filter: { idSection: params.id },
-         })
+
       });
     }
   }

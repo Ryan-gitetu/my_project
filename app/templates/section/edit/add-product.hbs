@@ -1,5 +1,5 @@
 {{page-title "AddProduct"}}
-<form {{action "ajouterProduit" @model.product on="submit"}} class="ui form" style="margin: 1% 10%;">
+<form {{action "ajouterProduit" @model.product @model.section on="submit"}} class="ui form" style="margin: 1% 10%;">
   <div class="fields">
     <div class="six wide field">
       <label>Nom du produit</label>

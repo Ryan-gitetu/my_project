@@ -27,23 +27,13 @@ export default class SectionIndexAddProductRoute extends Abstractroute {
 
   @action
   ajouterProduit(model) {
-    // let sectionSelected = this.store.findRecord('section', model.sectionSelected.id);
-    console.log("c",model.product.name);
-    let newProd = this.store.createRecord('product',{
-      name: model.product.name,
-      price: model.product.price,
-      promotion: model.product.promotion,
-      comments: model.product.comments,
-      products: model.product.packs
-    });
-
-    model.sectionSelected.products.pushObject(newProd);
+    model.product.section = model.sectionSelected;
+    let newProd = this.store.createRecord('product',model.product);
 
     newProd.save().then(() => {
-      model.sectionSelected.save();
-    })
+      this.transitionTo('section.index');
+    });
 
 
-    this.transitionTo('section.index');
   }
 }

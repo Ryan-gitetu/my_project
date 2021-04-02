@@ -41,7 +41,7 @@
 </div>
 {{outlet "addProduct"}}
 <div class="ui huge aligned celled list" style="margin: 0% 10% 5% 10%">
-  {{#each @model.products as |product|}}
+  {{#each @model.section.products as |product|}}
       <div class="item">
         <div class="right floated content">
           <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
