@@ -16,16 +16,12 @@ export default class SectionIndexAddRoute extends Abstractroute {
 
   @action
   annuler() {
-    this.newProduct.destroyRecord();
     this.transitionTo('section.index');
   }
 
   @action
   addSection(section) {
-    let newSection = this.store.createRecord('section', {
-      name: section.name,
-      description: section.description
-    });
+    let newSection = this.store.createRecord('section', section);
     newSection.save();
     this.transitionTo('section.index');
   }

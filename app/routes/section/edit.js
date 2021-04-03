@@ -10,9 +10,14 @@ export default class SectionEditRoute extends Abstractroute {
       return RSVP.hash({
         section: this.store.findRecord('section', params.id, {include: 'products'}),
         employee: this.userAuth.user,
-
       });
     }
+  }
+
+  @action
+  deconnexion() {
+    this.userAuth.logout();
+    this.redirect();
   }
 
   @action
@@ -36,6 +41,11 @@ export default class SectionEditRoute extends Abstractroute {
       let p = products.firstObject;
       await p.destroyRecord();
     }
+  }
+
+  @action
+  editSection() {
+
   }
 
   @action
