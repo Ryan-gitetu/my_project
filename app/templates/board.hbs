@@ -1,7 +1,7 @@
 {{page-title "Board"}}
 <!-- MENU BAR -->
-  <div class="ui inverted large menu" style="margin: 0%; border-radius: 0px; padding: 0px;">
-    <a class="active teal item" style="height: 101%; font-size: 113.333%;font-weight: 600; border-radius: 0px;" {{action "board"}}>
+  <div class="ui inverted huge menu" style="margin: 0%; border-radius: 0px; padding: 0% 7.5% 0% 7.5%;">
+    <a class="active teal item" style="height: 110%; font-size: 113.333%;font-weight: 600; border-radius: 0px;" {{action "board"}}>
       <i class="icon home"></i>
       Accueil
     </a>
@@ -11,7 +11,7 @@
         Magasin
     </a>
 
-    <a class="active olive right item" style=" padding: 0%;height: 96%; font-size: 113.333%;font-weight: 600; width: 10%;">
+    <a class="active olive right item" style=" padding: 0%;height: 110%; font-size: 113.333%;font-weight: 600; width: 10%;">
       <div class="ui simple dropdown item" style="height: 100%; width: 100%;font-size: 113.333%;font-weight: 600;">
         <i class="icon user outline"></i>
         {{model.employee.name}}
@@ -27,50 +27,56 @@
     </a>
   </div>
 
-<div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%;">
-  <div class="ui huge header"> Commandes </div>
-</div>
+  <div style="width: 100%; background-color: #a4a3a342;">
+    <div class="" style="width: 85%; margin: auto; background-color: white; padding: 0.3% 3%; min-height: 63.4em;">
 
-<div class="ui grid">
-  <div class="commande-div">
-      {{#each @model.orders as |order|}}
-            <div class="carte-div ui card">
-              <div class="content">
-                <div class="header">Commande {{order.id}}</div>
-              </div>
-              <div class="content">
+      <h1 class="ui huge header sizee vertical segment" style="font-size: 3em; margin-bottom: 3%;">
+        <i class="icon shopping basket"></i>
+        Mes commandes
+      </h1>
 
-                <h4 class="ui sub header">Date</h4>
-                <div class="ui small feed">
-                  <div class="event">
+      <div class="ui grid">
+        <div class="commande-div">
+            {{#each @model.orders as |order|}}
+                  <div class="carte-div ui card">
                     <div class="content">
-                      <div class="summary">
-                        {{order.dateCreation}}
-                      </div>
+                      <div class="header">Commande {{order.id}}</div>
                     </div>
-                  </div>
-                </div>
-
-                <h4 class="ui sub header">Nombre de produit</h4>
-                <div class="ui small feed">
-                  <div class="event">
                     <div class="content">
-                      <div class="summary">
-                        {{order.itemsNumber}}
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
-              </div>
-              <LinkTo @route="order" @model={{order.id}}>
-                <div class="ui bottom attached  blue button">
-                  Voir la commande
-                </div>
-              </LinkTo>
-            </div>
-      {{/each}}
+                      <h4 class="ui sub header">Date</h4>
+                      <div class="ui small feed">
+                        <div class="event">
+                          <div class="content">
+                            <div class="summary">
+                              {{order.dateCreation}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <h4 class="ui sub header">Nombre de produit</h4>
+                      <div class="ui small feed">
+                        <div class="event">
+                          <div class="content">
+                            <div class="summary">
+                              {{order.itemsNumber}}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <LinkTo @route="order" @model={{order.id}}>
+                      <div class="ui bottom attached  blue button">
+                        Voir la commande
+                      </div>
+                    </LinkTo>
+                  </div>
+            {{/each}}
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
 {{outlet}}
