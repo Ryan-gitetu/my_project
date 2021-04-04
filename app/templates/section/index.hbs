@@ -1,11 +1,12 @@
 {{page-title "Index"}}
-<div class="ui inverted large menu" style="margin: 0%; border-radius: 0px; padding: 0px;">
-  <a class="teal item" style="height: 101%; font-size: 113.333%;font-weight: 600; border-radius: 0px;" {{action "board"}}>
+<!-- MENU BAR -->
+<div class="ui inverted huge menu" style="margin: 0%; border-radius: 0px; padding: 0% 7.5% 0% 7.5%;">
+  <a class="teal item" style="height: 110%; font-size: 113.333%;font-weight: 600;" {{action "board"}}>
     <i class="icon home"></i>
     Accueil
   </a>
 
-  <a class="active teal item" style="height: 101%; font-size: 113.333%;font-weight: 600;" {{action "section" @model.section}}>
+  <a class="active teal item" style="height: 110%; font-size: 113.333%;font-weight: 600;" {{action "section" @model.section}}>
     <img style="height: 60%; width: 20px;opacity: 0.9; margin: 0.0em 0.35em 0em 0em;" src="https://img.icons8.com/pastel-glyph/64/ffffff/shop--v1.png/">
       Magasin
   </a>
@@ -26,7 +27,77 @@
   </a>
 </div>
 
-<div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%; margin-right: 2%;">
+<div style="width: 100%; height: auto; background-color: #a4a3a342;">
+  <div class="" style="width: 85%; height: auto; margin: auto; background-color: white; padding: 3%;">
+
+    <h1 class="ui huge header" style="font-size: 3em; margin-bottom: 3%;">
+      <i class="icon list"></i>
+      Sections du magasin
+    </h1>
+    <!-- BOUTON D'AJOUT -->
+    <div style="width: 100% margin-bottom: 3%;">
+      <button class="ui teal large button" {{action "addSection"}} >
+        <i class="icon add"></i>
+        Ajouter une section
+      </button>
+
+      <button class="ui blue large button" {{action "addProduit"}} >
+        <i class="icon add"></i>
+        Ajouter un produit
+      </button>
+    </div>
+
+    {{outlet "addSection"}}
+    {{outlet "addProduct"}}
+
+
+    <div class="ui grid" style="margin-top: 5%;">
+      <div class="commande-div">
+        {{#each @model.sections as |section|}}
+        <div class="ui card" style="width: 40%; height: 23%; margin-left:auto;margin-right: auto; margin-bottom: 2%">
+          <div class="content">
+            <div class="header" style="">
+              <div class="ui grid"  style="vertical-align: baseline;">
+                <div class="fiveteen wide column" style="width: auto;">
+                  <div class="ui  header">
+                    {{section.name}}
+                  </div>
+                </div>
+                <div class="right floated aligned one wide column" style="padding-right: 10%;">
+                  <button class="circular ui negative icon button" {{action "deleteSection" section}}>
+                    <i class="trash alternate icon"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content">
+            <h3 class="ui sub header">Description</h3>
+            <div class="ui small feed">
+              <div class="content" style="height: 100px; overflow: auto; width: 95%; margin-left:auto;">
+                  {{section.description}}
+              </div>
+            </div>
+          </div>
+          <div class="extra content" style="">
+            <LinkTo @route="section.edit" @model={{section.id}}>
+              <div class="ui right floated primary button">
+                Voir la section
+                <i class="right chevron icon"></i>
+              </div>
+            </LinkTo>
+          </div>
+        </div>
+        {{/each}}
+        </div>
+      </div>
+    <!-- LISTE -->
+
+  </div>
+</div>
+<!-- PAGE -->
+
+<!-- <div class="test ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%; margin-right: 2%;">
   <div class="ui huge header" style="margin: 0% 1%;">
     Sections
 
@@ -82,5 +153,5 @@
             </div>
       {{/each}}
   </div>
-</div>
+</div> -->
 {{outlet}}
