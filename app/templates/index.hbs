@@ -1,33 +1,30 @@
 {{page-title "Index"}}
-<div class="ui text container">
-  <div class="ui middle aligned center aligned grid">
+<!-- <div class="ui text container" style="height: 100%; width: 100%"> -->
+  <div class="ui middle aligned center aligned grid" style="margin: 0; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40%;">
     <div class="column">
-      <h2 class="ui teal image header">
-        <div class="content">
-          Log-in to your account
-        </div>
-      </h2>
-      <form {{action "login" @model on="submit"}} class="ui large form">
+      <form {{action "login" @model on="submit"}} class="ui large form" style="width: 100%">
         <div class="ui stacked segment">
+          <h2 class="ui teal huge header" style="margin-bottom: 5%">
+            <div class="content">
+              Connexion au magasin
+            </div>
+          </h2>
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <Input @value={{@model.email}} type="text" name="email" placeholder="E-mail address"/>
+              <Input @value={{@model.email}} type="text" name="email" placeholder="E-mail"/>
             </div>
           </div>
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <Input @value={{@model.password}} type="password" name="password" placeholder="Password"/>
+              <Input @value={{@model.password}} type="password" name="password" placeholder="Mot de passe"/>
             </div>
           </div>
           <button type="submit" class="ui button">  Se connecter </button>
         </div>
-
-        <div class="ui error message"></div>
-
       </form>
     </div>
   </div>
-</div>
+<!-- </div> -->
 {{outlet}}
