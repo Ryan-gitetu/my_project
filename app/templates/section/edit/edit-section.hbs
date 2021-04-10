@@ -1,0 +1,17 @@
+{{page-title "EditSection"}}
+<form {{action "editSection" @model on="submit"}} class="ui form" style="margin: 1% 10%;">
+  <div class="fields">
+    <div class="six wide field">
+      <label>Nom du produit</label>
+      <Input type="text" placeholder="Nom" @value={{@model.name}}/>
+    </div>
+  </div>
+
+  <div class="field" style="margin-right: 11%;">
+    <label>Description</label>
+    <Textarea rows="3" @value={{@model.description}}/>
+  </div>
+  <button type="submit" class="ui green button"> Modifier la section </button>
+  <button class="ui negative button" {{action "annuler" @model}}> Annuler </button>
+</form>
+{{outlet}}

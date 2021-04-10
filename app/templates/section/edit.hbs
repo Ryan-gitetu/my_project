@@ -43,14 +43,15 @@
         Supprimer la section
       </button>
 
-      <button class="ui blue large button" {{action "addProduit"}} >
+      <button class="ui blue large button" {{action "editSection" @model.section}} >
         <i class="edit alternate icon"></i>
         Modifier la section
       </button>
     </div>
+    {{outlet "editSection"}}
     <!-- SEPARATEUR -->
     <div class="ui divider"></div>
-    
+
     <div style="margin-right: 11%; margin-bottom: 5%; margin-left: auto;">
       <button class="ui right floated teal large button" style="margin-left: auto; margin-right: 0%;" {{action "add" @model.section.id}} >
         <i class="icon add"></i>

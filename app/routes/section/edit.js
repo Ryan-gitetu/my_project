@@ -44,8 +44,8 @@ export default class SectionEditRoute extends Abstractroute {
   }
 
   @action
-  editSection() {
-
+  editSection(section) {
+    this.transitionTo('section.edit.editSection', section.id);
   }
 
   @action

@@ -17,6 +17,7 @@ Router.map(function () {
     this.route('edit', {path: 'edit/:id'}, function() {
       this.route('edit', {path: 'edit/:id'});
       this.route('add-product');
+      this.route('editSection', {path: 'editSection/:id'});
     });
   });
   this.route('board');
