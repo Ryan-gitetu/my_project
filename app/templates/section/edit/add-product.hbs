@@ -35,6 +35,6 @@
     <Textarea rows="3" @value={{@model.product.comments}}/>
   </div>
   <button type="submit" class="ui green button"> Ajouter le produit </button>
-  <button class="ui negative button"> Annuler </button>
+  <button class="ui negative button" {{action "annuler"}}> Annuler </button>
 </form>
 {{outlet}}

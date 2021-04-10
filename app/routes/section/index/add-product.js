@@ -21,7 +21,7 @@ export default class SectionIndexAddProductRoute extends Abstractroute {
   }
 
   @action
-  annuler(product) {
+  annuler() {
     this.transitionTo('section.index');
   }
 

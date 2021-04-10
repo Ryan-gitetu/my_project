@@ -28,7 +28,7 @@ export default class SectionEditAddProductRoute extends Abstractroute {
   }
 
   @action
-  ajouterProduit(produit,section) {
+  ajouterProduit(produit,section) {    
     produit.section = section;
     let newProd = this.store.createRecord('product', produit);
 

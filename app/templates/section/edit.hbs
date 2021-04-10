@@ -1,72 +1,84 @@
 {{page-title "Edit"}}
 <!-- MENU BAR -->
-  <div class="ui inverted large menu" style="margin: 0%; border-radius: 0px; padding: 0px;">
-    <a class="item" style="height: 100%; font-size: 113.333%;font-weight: 600;" {{action "board"}}>
-      <i class="icon home"></i>
-      Accueil
-    </a>
+<div class="ui inverted huge menu" style="margin: 0%; border-radius: 0px; padding: 0% 7.5% 0% 7.5%;">
+  <a class=" item" style="height: 110%; font-size: 113.333%;font-weight: 600; border-radius: 0px;" {{action "board"}}>
+    <i class="icon home"></i>
+    Accueil
+  </a>
 
-    <a class="item" style="height: 100%; font-size: 113.333%;font-weight: 600;" {{action "toSection" @model.section}}>
-      <img style="height: 60%; width: 20px;opacity: 0.9; margin: 0.0em 0.35em 0em 0em;" src="https://img.icons8.com/pastel-glyph/64/ffffff/shop--v1.png/">
-        Magasin
-    </a>
+  <a class="active teal item" style="height: 110%; font-size: 113.333%;font-weight: 600;" {{action "toSection" @model.section}}>
+    <img style="height: 60%; width: 20px;opacity: 0.9; margin: 0.0em 0.35em 0em 0em;" src="https://img.icons8.com/pastel-glyph/64/ffffff/shop--v1.png/">
+      Magasin
+  </a>
 
-    <a class="active olive right item" style=" padding: 0%;height: 96%; font-size: 113.333%;font-weight: 600; width: 10%;">
-      <div class="ui simple dropdown item" style="height: 100%; width: 100%;font-size: 113.333%;font-weight: 600;">
-        <i class="icon user outline"></i>
-        {{model.employee.name}}
-        <i class="dropdown icon" style="margin-left: auto;margin-right: 0;"></i>
-        <div class="compact menu" style="margin: 0%; border-radius: 0px; padding: 0px;">
-          <div class="header" style="font-weight: 600;">Profile</div>
-          <a class="item" {{action "deconnexion"}}>
-            <i class="icon sign-out"></i>
-            Deconnexion
-          </a>
-        </div>
+  <a class="active olive right item" style=" padding: 0%;height: 110%; font-size: 113.333%;font-weight: 600; width: 10%;">
+    <div class="ui simple dropdown item" style="height: 100%; width: 100%;font-size: 113.333%;font-weight: 600;">
+      <i class="icon user outline"></i>
+      {{model.employee.name}}
+      <i class="dropdown icon" style="margin-left: auto;margin-right: 0;"></i>
+      <div class="compact menu" style="margin: 0%; border-radius: 0px; padding: 0px;">
+        <div class="header" style="font-weight: 600;">Profile</div>
+        <a class="item" {{action "deconnexion"}}>
+          <i class="icon sign-out"></i>
+          Deconnexion
+        </a>
       </div>
-    </a>
-  </div>
+    </div>
+  </a>
+</div>
 
 <!-- SECTION -->
-  <div class="ui sizer vertical segment" style="margin-top: 70px; margin-left: 2%; margin-bottom: 2%; margin-right: 2%;">
-    <div class="ui huge header" style="margin: 0% 1%;" >
+
+<div style="width: 100%; height: auto; background-color: #a4a3a342;">
+  <div class="" style="width: 85%; height: auto; margin: auto; background-color: white; padding: 3%;">
+
+    <h1 class="ui huge header" style="font-size: 3em; margin-bottom: 3%;">
+      <i class="icon list"></i>
       {{@model.section.name}}
-      <button class="ui right floated negative large button" {{action "deleteSection" @model.section}} >
+    </h1>
+    <!-- BOUTON D'AJOUT -->
+    <div style="width: 100% margin-bottom: 3%;">
+      <button class="ui teal large button" {{action "addSection"}} >
         <i class="icon add"></i>
         Supprimer la section
       </button>
-      <div class="ui right floated large blue button" {{action "editSection" product.id}}>
+
+      <button class="ui blue large button" {{action "addProduit"}} >
         <i class="edit alternate icon"></i>
         Modifier la section
-      </div>
+      </button>
     </div>
-  </div>
+    <!-- SEPARATEUR -->
+    <div class="ui divider"></div>
+    
+    <div style="margin-right: 11%; margin-bottom: 5%; margin-left: auto;">
+      <button class="ui right floated teal large button" style="margin-left: auto; margin-right: 0%;" {{action "add" @model.section.id}} >
+        <i class="icon add"></i>
+        AJouter un produit
+      </button>
+    </div>
+    {{outlet "addProduct"}}
+    <div class="ui huge aligned celled list" style="margin: 0% 10% 5% 10%">
+      {{#each @model.section.products as |product|}}
+          <div class="item">
+            <div class="right floated content">
+              <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
+                <i class="edit alternate icon"></i>
+              </div>
+              <div class="ui negative button" {{action "delete" product}}> Supprimer
+                <i class="trash alternate icon"></i>
+              </div>
+            </div>
+            <div class="content">
+              {{product.name}}
+            </div>
+          </div>
+          {{outlet product.id}}
+        {{/each}}
+    </div>
 
-  <div style="margin-right: 11%; margin-bottom: 5%; margin-left: auto;">
-    <button class="ui right floated teal large button" style="margin-left: auto; margin-right: 0%;" {{action "add" @model.section.id}} >
-      <i class="icon add"></i>
-      AJouter un produit
-    </button>
   </div>
-  {{outlet "addProduct"}}
-  <div class="ui huge aligned celled list" style="margin: 0% 10% 5% 10%">
-    {{#each @model.section.products as |product|}}
-        <div class="item">
-          <div class="right floated content">
-            <div class="ui blue button" {{action "transtionto" product.id}}> Modifier
-              <i class="edit alternate icon"></i>
-            </div>
-            <div class="ui negative button" {{action "delete" product}}> Supprimer
-              <i class="trash alternate icon"></i>
-            </div>
-          </div>
-          <div class="content">
-            {{product.name}}
-          </div>
-        </div>
-        {{outlet product.id}}
-      {{/each}}
-  </div>
+</div>
 {{outlet}}
 
         <!-- <LinkTo @route="section.edit" @model={{product.id}}>
