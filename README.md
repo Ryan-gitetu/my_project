@@ -1,57 +1,23 @@
-# tds
+# Le projet
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+En raison de la crise sanitaire, beaucoup de magasins ou de commerçants ont recours de manière exceptionnelle à la vente à emporter.
+Beaucoup d'entre eux n'ont pas à leur disposition une application Web leur permettant de gérer cette activité. 
 
-## Prerequisites
+Le but est donc de créer une application web pour gérer en interne un magasin. Les données du magasin viennent d'une base de données, on y retrouve par exemple les identifiants des employées pour se connecter, ainsi que les données correspondant aux rayons et produits du magasin. Nous utilisons l'API vendor afin de d'interagir avec la base de données depuis l'application web. 
 
-You will need the following things properly installed on your computer.
+### Framework EmberJS + Semantic UI
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+Le projet à été conçu avec l'utilisation de deux framework
+ *  EmberJS est un framework open-source javascript, qui s'appuie sur une architecture MVC.
+ *  Semantic UI est un framework d'interface avec des composants sémantiques prédifini qui simplifie la mise en page d'un site.
 
-## Installation
+# Le site
 
-* `git clone <repository-url>` this repository
-* `cd tds`
-* `npm install`
+### Connexion au site 
+ Pour accéder à n'importe quelles pages du site, il faut renseigner ses identifiants. La page d'après connexion pemet au commercant de voir les commandes qu'il doit traiter. La barre de menu en haut permet de pouvoir accéder à la partie gestion du magasin, mais aussi de se déconnecter à tout moment.
+ 
+### Gestion du magasin
 
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+ La gestion du magasin se fait par deux pages principales. La première page accessible sur la barre de menu, permet d'afficher les differentes sections du magasin avec leurs descriptions. Cette page permet aussi l'ajout, la suppression et la vue détaillées des section mais aussi l'ajout d'un produit. 
+ 
+ Lorsque l'on clique sur le bouton pour détailler une section, nous sommes redirigé sur la secone page principale de gestion du magasin. Cette page affiche les produits présent dans la section, elle permet aussi de supprimer ou modifier la section. Pour les interactions avec les produit, ils peuvent etre supprimés et modifiés. Il est aussi possible d'ajouter de nouveaux produits.
